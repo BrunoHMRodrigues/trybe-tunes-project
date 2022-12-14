@@ -8,12 +8,14 @@ import ProfileEdit from '../pages/ProfileEdit';
 import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
 import Loading from '../pages/Loading';
+// import Header from './Header';
 
 class Content extends React.Component {
   render() {
     // const { userName } = this.props
     return (
       <main>
+        {/* <Header /> */}
         <Switch>
           <Route path="/search" component={ Search } />
           <Route path="/album" component={ Album } />
