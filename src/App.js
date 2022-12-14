@@ -5,13 +5,20 @@ import Content from './Components/Content';
 
 // Iniciando
 class App extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     userName: '',
+  //   };
+  // }
+
   render() {
     return (
       <>
         <p>TrybeTunes</p>
         <BrowserRouter>
           <div>
-            <Content />
+            <Content { ...this.state } />
           </div>
         </BrowserRouter>
       </>
