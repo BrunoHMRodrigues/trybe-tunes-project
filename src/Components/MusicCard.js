@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../pages/Loading';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -13,27 +13,37 @@ class MusicCard extends React.Component {
     };
     // const { handleClickMusic } = this.props;
     this.handleClickMusic = this.handleClickMusic.bind(this);
+    this.favoriteMusics = this.favoriteMusics.bind(this);
     // this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    this.favoriteMusics();
+  }
+
   async handleClickMusic() {
-    const { selected } = this.state;
+    // const { selected } = this.state;
     // this.setState({ isLoading: true }, () => addSong(this.props)
     //   .then(this.setState({ isLoading: false })));
-    // this.setState((previousState) => ({ isLoading: true, selected: !previousState.selected }), () => addSong(this.props).then(this.setState({ isLoading: false })));
-
-    this.setState((previousState) => ({
-      isLoading: true, selected: !previousState.selected }));
-
-    if (!selected) {
-      await addSong(this.props);
-    }
-
-    this.setState({ isLoading: false });
+    this.setState(
+      (previousState) => ({ isLoading: true, selected: !previousState.selected }),
+      async () => {
+        await addSong(this.props);
+        this.setState({ isLoading: false });
+      },
+    );
   }
   // handleClick() {
   //   this.setState((previousState) => ({ selected: !previousState.selected }));
   // }
+
+  async favoriteMusics() {
+    const { trackId } = this.props;
+    const favoriteSongs = await getFavoriteSongs();
+    // console.log('entrou');
+    console.log(favoriteSongs);
+    this.setState({ selected: favoriteSongs.some((music) => music.trackId === trackId) });
+  }
 
   render() {
     const { musicData: {
@@ -89,7 +99,7 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string.isRequired,
     trackViewUrl: PropTypes.string.isRequired,
   }).isRequired,
-  handleClickMusic: PropTypes.func.isRequired,
+  // handleClickMusic: PropTypes.func.isRequired,
 };
 
 export default MusicCard;

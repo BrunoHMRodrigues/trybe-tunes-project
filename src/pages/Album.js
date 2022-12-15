@@ -68,6 +68,7 @@ class Album extends React.Component {
                 .map((music) => (<MusicCard
                   key={ music.trackNumber }
                   musicData={ music }
+                  trackId={ music.trackId }
                   // handleClickMusic={ this.handleClickMusic }
                 />))}
             </div>
