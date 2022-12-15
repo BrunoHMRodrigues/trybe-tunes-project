@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from '../Components/MusicCard';
+// import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -14,13 +15,22 @@ class Album extends React.Component {
       artworkUrl100: '',
       collectionName: '',
       isLoading: false,
+      // favIsLoading: false,
+      // selected: false,
     };
     this.fetchMusics = this.fetchMusics.bind(this);
+    // this.handleClickMusic = this.handleClickMusic.bind(this);
   }
 
   componentDidMount() {
     this.fetchMusics();
   }
+
+  // handleClickMusic() {
+  //   this.setState({ isLoading: true }, () => addSong(this.props)
+  //     .then(this.setState({ isLoading: false })));
+  //   // this.setState((previousState) => ({ isLoading: true, selected: !previousState.selected }), () => addSong(this.props).then(this.setState({ isLoading: false })));
+  // }
 
   async fetchMusics() {
     const { match: { params: { collectionId } } } = this.props;
@@ -37,7 +47,6 @@ class Album extends React.Component {
   render() {
     // const { match: { params: { collectionId } } } = this.props;
     const { isLoading, musics, artistName, artworkUrl100, collectionName } = this.state;
-    console.log(isLoading);
     // const { artistName, artworkUrl100, collectionName } = musics;
     // const { artistName,
     //   collectionName,
@@ -50,7 +59,6 @@ class Album extends React.Component {
           // console.log(isLoading)
           (musics.length) && (
             <div>
-              {console.log(artistName)}
               <div>
                 <img src={ artworkUrl100 } alt="Capa Album" />
                 <h3 data-testid="album-name">{collectionName}</h3>
@@ -60,6 +68,7 @@ class Album extends React.Component {
                 .map((music) => (<MusicCard
                   key={ music.trackNumber }
                   musicData={ music }
+                  // handleClickMusic={ this.handleClickMusic }
                 />))}
             </div>
           )
