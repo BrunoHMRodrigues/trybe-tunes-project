@@ -110,6 +110,7 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string.isRequired,
     trackViewUrl: PropTypes.string.isRequired,
   }).isRequired,
+  trackId: PropTypes.number.isRequired,
   // handleClickMusic: PropTypes.func.isRequired,
 };
 
