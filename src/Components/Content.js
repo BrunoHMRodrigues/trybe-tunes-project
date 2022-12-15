@@ -18,6 +18,7 @@ class Content extends React.Component {
         {/* <Header /> */}
         <Switch>
           <Route path="/search" component={ Search } />
+          <Route path="/album/:collectionId" component={ Album } />
           <Route path="/album" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
           <Route path="/profile/edit" component={ ProfileEdit } />

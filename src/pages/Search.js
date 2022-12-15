@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
-import Album from '../Components/Album';
+import AlbumCard from '../Components/AlbumCard';
 
 class Search extends React.Component {
   constructor() {
@@ -78,7 +78,7 @@ class Search extends React.Component {
               ) : (
                 albunsList
                   .map((album) => (
-                    <Album key={ album.collectionId } albunsList={ album } />))
+                    <AlbumCard key={ album.collectionId } albunsList={ album } />))
               )}
             </main>
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class Album extends React.Component {
+class AlbumCard extends React.Component {
   render() {
     const { albunsList: {
       artistName,
@@ -26,12 +26,13 @@ class Album extends React.Component {
   }
 }
 
-Album.propTypes = {
-  artistName: PropTypes.string.isRequired,
-  collectionName: PropTypes.string.isRequired,
-  artworkUrl100: PropTypes.string.isRequired,
-  albunsList: PropTypes.shape([]).isRequired,
-  collectionId: PropTypes.string.isRequired,
+AlbumCard.propTypes = {
+  albunsList: PropTypes.shape({
+    artistName: PropTypes.string.isRequired,
+    collectionName: PropTypes.string.isRequired,
+    artworkUrl100: PropTypes.string.isRequired,
+    collectionId: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
-export default Album;
+export default AlbumCard;
