@@ -58,7 +58,7 @@ class Album extends React.Component {
         {(isLoading) ? (<Loading />) : (
           // console.log(isLoading)
           (musics.length) && (
-            <div>
+            <div data-testid="page-album">
               <div>
                 <img src={ artworkUrl100 } alt="Capa Album" />
                 <h3 data-testid="album-name">{collectionName}</h3>
