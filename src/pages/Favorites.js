@@ -38,7 +38,7 @@ class Favorites extends React.Component {
         <Header />
         {(favoriteMusics.length > 0) && (
           <div data-testid="page-favorites">
-            {console.log(favoriteMusics)}
+            {/* {console.log(favoriteMusics)} */}
             {favoriteMusics
               .map((music) => (<MusicCard
                 key={ music.trackNumber }
