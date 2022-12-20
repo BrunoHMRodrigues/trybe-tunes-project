@@ -36,19 +36,19 @@ class Favorites extends React.Component {
     return (
       <>
         <Header />
-        {(favoriteMusics.length > 0) && (
-          <div data-testid="page-favorites">
-            {/* {console.log(favoriteMusics)} */}
-            {favoriteMusics
+
+        <div data-testid="page-favorites">
+          {(favoriteMusics.length > 0) && (
+            (favoriteMusics
               .map((music) => (<MusicCard
                 key={ music.trackNumber }
                 checked={ selected }
                 musicData={ music }
                 trackId={ music.trackId }
                 filterFavorits={ this.filterFavorits }
-              />))}
-          </div>
-        )}
+              />)))
+          )}
+        </div>
         {/* <div data-testid="page-favorites">
           {console.log(favoriteMusics)}
           {favoriteMusics
